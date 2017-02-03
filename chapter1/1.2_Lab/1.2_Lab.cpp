@@ -10,6 +10,7 @@
 #include <fstream>
 #include <cstring>
 #include <sstream>
+#include <vector>
 using namespace std;
 
 int main()
@@ -22,11 +23,19 @@ int main()
     int index = 0;
     stringstream ss;
     int next_element = 0;
+    int which_set = 1;
+    
+    int tempElementInt;
+    string tempElementString;
+    vector<int> setA, setB;
+    //vector<int> setB;
+    int subIndex;
     
     while (!inputStream.eof())
     {
         index = 0;
         next_element = 0;
+        subIndex = 0;
         
         getline(inputStream, element, '\n');
         
@@ -37,8 +46,51 @@ int main()
         {
             if (charElement[index] == ' ' || charElement[index] == '\0')
             {
-                cout << "Test: ";
-                cout << ss.str() << endl;
+                //cout << "Test: ";
+                //tempElement = ss.str();
+                //ss >> tempElement;
+                //stoi(ss.str());
+                tempElementString = ss.str();
+                //cout << tempElementString << endl;
+                
+                if (charElement[index] != '\0')
+                {
+                    tempElementInt = stoi(tempElementString);
+                    cout << tempElementInt << endl;
+                    
+                    if (which_set == 1)
+                    {
+                        setA.push_back(tempElementInt);
+                        cout << "Test" << setA[subIndex] << endl;
+                        subIndex++;
+                    }
+                    
+                    if (which_set == 2)
+                    {
+                        setB.push_back(tempElementInt);
+                        cout << "Test" << setB[subIndex] << endl;
+                        subIndex++;
+                    }
+                    /*
+                    if (which_set == 3)
+                    {
+                        setC.push_back(tempElementInt);
+                        cout << "Test" << setC[subIndex] << endl;
+                        subIndex++;
+                    }
+                    
+                    if (which_set == 2)
+                    {
+                        setD.push_back(tempElementInt);
+                        cout << "Test" << setD[subIndex] << endl;
+                        subIndex++;
+                    }*/
+                }
+                
+                
+                
+                //cout << "Test: ";
+                //cout << ss.str() << endl;
                 ss.str("");
             }
             
@@ -55,6 +107,8 @@ int main()
             
             index++;
         }
+        
+        which_set++;
     }
     
     inputStream.close();
