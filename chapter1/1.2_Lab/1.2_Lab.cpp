@@ -27,15 +27,17 @@ int main()
     
     int tempElementInt;
     string tempElementString;
-    vector<int> setA, setB;
+    vector<string> setA, setB;
     //vector<int> setB;
-    int subIndex;
+    int subIndex = 0;
+    int setCardinality[20] = {0};
     
     while (!inputStream.eof())
     {
         index = 0;
         next_element = 0;
-        subIndex = 0;
+        //subIndex = subIndex + 1;
+        cout << "sub Index: " << subIndex << endl;
         
         getline(inputStream, element, '\n');
         
@@ -51,8 +53,33 @@ int main()
                 //ss >> tempElement;
                 //stoi(ss.str());
                 tempElementString = ss.str();
-                //cout << tempElementString << endl;
+                cout << "Hi: " << tempElementString << endl;
                 
+                
+                
+                //else
+                //{
+                
+                setCardinality[subIndex] = setCardinality[subIndex] + 1;
+                cout << "Current cardinality: " << setCardinality[subIndex] << endl;
+                //}
+                
+                if (charElement[index] == '\0')
+                {
+                    cout << "Boop" << endl;
+                }
+                
+                if (index == 0)
+                {
+                    setA.push_back(tempElementString);
+                }
+                
+                if (index == 1)
+                {
+                    setB.push_back(tempElementString);
+                }
+                
+                /*
                 if (charElement[index] != '\0')
                 {
                     tempElementInt = stoi(tempElementString);
@@ -84,8 +111,8 @@ int main()
                         setD.push_back(tempElementInt);
                         cout << "Test" << setD[subIndex] << endl;
                         subIndex++;
-                    }*/
-                }
+                    }
+                }*/
                 
                 
                 
@@ -109,9 +136,35 @@ int main()
         }
         
         which_set++;
+        subIndex = subIndex + 1;
     }
     
     inputStream.close();
     
+    for (int i = 0; i < 20; i++)
+    {
+        cout << setCardinality[i] << endl;
+    }
+    
+    cout << "Space woooooo" << endl;
+    
+    /*
+    int meh;
+    for (int i = 0; i < 10; i++)
+    {
+        while (setCardinality[i] > i)
+        {
+            if (i == 0)
+            {
+                cout << setA[setCardinality[i]] << endl;
+            }
+            
+            else if (i == 1)
+            {
+                cout << setB[setCardinality[i]] << endl;
+            }
+        }
+    }
+    */
     return 0;
 }
